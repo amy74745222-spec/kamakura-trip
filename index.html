@@ -6,9 +6,7 @@
 <title>鎌倉旅遊App</title>
 
 <style>
-body{margin:0;font-family:-apple-system;background:#f5f7fa;}
-header{padding:15px;font-size:20px;font-weight:bold;}
-
+body{margin:0;font-family:-apple-system;background:#f5f7fa;color:#333;}
 .section{display:none;}
 .section.active{display:block;}
 
@@ -17,7 +15,7 @@ background:white;
 border-radius:16px;
 padding:16px;
 margin:12px;
-box-shadow:0 4px 10px rgba(0,0,0,0.1);
+box-shadow:0 4px 10px rgba(0,0,0,0.08);
 }
 
 .nav{
@@ -33,20 +31,38 @@ flex:1;
 border:none;
 padding:12px;
 background:none;
+font-size:14px;
 }
-.nav button.active{
-color:#3498db;
-font-weight:bold;
-}
+.nav button.active{color:#3498db;font-weight:bold;}
 
 .btn{
 display:inline-block;
-padding:8px 12px;
+padding:6px 10px;
 background:#3498db;
 color:white;
-border-radius:10px;
+border-radius:8px;
 text-decoration:none;
-margin-top:5px;
+font-size:13px;
+margin-top:6px;
+}
+
+/* Hero */
+.hero{
+position:relative;
+}
+.hero img{
+width:100%;
+height:220px;
+object-fit:cover;
+}
+.hero-title{
+position:absolute;
+bottom:12px;
+left:15px;
+color:white;
+font-size:20px;
+font-weight:bold;
+text-shadow:0 2px 5px rgba(0,0,0,0.4);
 }
 
 /* 行程 */
@@ -73,33 +89,42 @@ color:white;
 .spot{
 background:white;
 margin:10px;
-padding:15px;
-border-radius:15px;
-box-shadow:0 4px 10px rgba(0,0,0,0.1);
+padding:14px;
+border-radius:14px;
+box-shadow:0 3px 8px rgba(0,0,0,0.08);
 cursor:pointer;
 }
-
+.spot h3{
+margin:0;
+font-size:15px;
+}
 .detail{
 display:none;
-margin-top:10px;
-font-size:14px;
+margin-top:8px;
+font-size:13px;
 color:#555;
+line-height:1.6;
 }
 </style>
 </head>
 
 <body>
 
-<!-- Hero 圖 -->
-<div style="position:relative;">
-<img src="kamakura.jpg" style="width:100%;height:220px;object-fit:cover;">
-<div style="position:absolute;bottom:10px;left:15px;color:white;font-size:20px;font-weight:bold;">
-鎌倉・湘南之旅
-</div>
+<!-- Hero -->
+<div class="hero">
+<img src="kamakura.jpg">
+<div class="hero-title">鎌倉・湘南之旅</div>
 </div>
 
 <!-- 行程 -->
 <div id="trip" class="section active">
+
+<div class="card">
+<h3>🏠 和美屋 Wamiya</h3>
+<p>神奈川県鎌倉市坂ノ下 11-13</p>
+<p>15:00 Check-in / 10:00 Check-out</p>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=和美屋+鎌倉" target="_blank">導航</a>
+</div>
 
 <div class="day-tabs">
 <button onclick="showDay(1)" class="active">Day1</button>
@@ -107,35 +132,133 @@ color:#555;
 <button onclick="showDay(3)">Day3</button>
 </div>
 
+<!-- Day1 -->
 <div id="day1" class="day active">
 <div class="spot" onclick="toggle(this)">
-<h3>七里濱夕陽</h3>
+<h3>15:00 和美屋 Check-in</h3>
+<div class="detail">鎌倉→長谷（江之電5分）</div>
+</div>
+
+<div class="spot" onclick="toggle(this)">
+<h3>16:30 七里濱夕陽</h3>
 <div class="detail">
-<p>地址：七里ヶ浜海岸</p>
-<p>時間：全天開放</p>
+江之電6分<br>
 <a class="btn" href="https://www.google.com/maps/search/?api=1&query=七里ヶ浜" target="_blank">導航</a>
 </div>
 </div>
+
+<div class="spot" onclick="toggle(this)">
+<h3>18:30 晚餐</h3>
+<div class="detail">預算：約2500円</div>
+</div>
 </div>
 
+<!-- Day2 -->
 <div id="day2" class="day">
 <div class="spot" onclick="toggle(this)">
-<h3>鎌倉高校前</h3>
+<h3>05:30 七里濱日出</h3>
 <div class="detail">
-<p>地址：神奈川県鎌倉市腰越</p>
-<p>時間：全天</p>
-<a class="btn" href="https://www.google.com/maps/search/?api=1&query=鎌倉高校前駅" target="_blank">導航</a>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=七里ヶ浜">導航</a>
+</div>
+</div>
+
+<div class="spot" onclick="toggle(this)">
+<h3>08:00 bills 早餐</h3>
+<div class="detail">
+3500円<br>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=bills+七里ヶ浜">導航</a>
+</div>
+</div>
+
+<div class="spot" onclick="toggle(this)">
+<h3>10:00 鎌倉高校前</h3>
+<div class="detail">
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=鎌倉高校前駅">導航</a>
+</div>
+</div>
+
+<div class="spot" onclick="toggle(this)">
+<h3>11:00 稻村崎</h3>
+<div class="detail">
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=稲村ヶ崎">導航</a>
+</div>
+</div>
+
+<div class="spot" onclick="toggle(this)">
+<h3>12:30 長谷大佛</h3>
+<div class="detail">
+300円<br>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=高徳院">導航</a>
+</div>
+</div>
+
+<div class="spot" onclick="toggle(this)">
+<h3>13:30 午餐</h3>
+<div class="detail">約2000円</div>
+</div>
+
+<div class="spot" onclick="toggle(this)">
+<h3>15:00 音樂盒堂 & 力餅家</h3>
+<div class="detail">
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=鎌倉オルゴール堂">導航</a>
+</div>
+</div>
+
+<div class="spot" onclick="toggle(this)">
+<h3>16:30 Espresso D Works</h3>
+<div class="detail">
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=Espresso+D+Works">導航</a>
+</div>
+</div>
+
+<div class="spot" onclick="toggle(this)">
+<h3>17:30 七里濱夕陽</h3>
+<div class="detail">
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=七里ヶ浜">導航</a>
 </div>
 </div>
 </div>
 
+<!-- Day3 -->
 <div id="day3" class="day">
 <div class="spot" onclick="toggle(this)">
-<h3>鶴岡八幡宮</h3>
+<h3>09:30 Check-out</h3>
+</div>
+
+<div class="spot" onclick="toggle(this)">
+<h3>10:30 佐助稻荷神社</h3>
 <div class="detail">
-<p>地址：神奈川県鎌倉市雪ノ下2-1-31</p>
-<p>時間：06:00–20:00</p>
-<a class="btn" href="https://www.google.com/maps/search/?api=1&query=鶴岡八幡宮" target="_blank">導航</a>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=佐助稲荷神社">導航</a>
+</div>
+</div>
+
+<div class="spot" onclick="toggle(this)">
+<h3>12:00 鶴岡八幡宮</h3>
+<div class="detail">
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=鶴岡八幡宮">導航</a>
+</div>
+</div>
+
+<div class="spot" onclick="toggle(this)">
+<h3>13:30 iwata coffee</h3>
+<div class="detail">
+1500円<br>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=イワタコーヒー店">導航</a>
+</div>
+</div>
+
+<div class="spot" onclick="toggle(this)">
+<h3>15:00 小町通</h3>
+<div class="detail">
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=小町通り">導航</a>
+</div>
+</div>
+
+<div class="spot" onclick="toggle(this)">
+<h3>18:00 鎌倉釜飯</h3>
+<div class="detail">
+3000円<br>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=鎌倉釜飯">導航</a>
 </div>
 </div>
 </div>
@@ -155,10 +278,10 @@ color:#555;
 <!-- 預算 -->
 <div id="budget" class="section">
 <div class="card">
-<h3>💰 預算分析</h3>
-<input id="cost1" placeholder="Day1 花費">
-<input id="cost2" placeholder="Day2 花費">
-<input id="cost3" placeholder="Day3 花費">
+<h3>💰 預算</h3>
+<input id="c1" placeholder="Day1">
+<input id="c2" placeholder="Day2">
+<input id="c3" placeholder="Day3">
 <p id="total">總計：0</p>
 </div>
 </div>
@@ -166,13 +289,12 @@ color:#555;
 <!-- 天氣 -->
 <div id="weather" class="section">
 <div class="card">
-<h3>🌤 鎌倉天氣</h3>
-<p id="weatherText">載入中...</p>
-<p id="sunText"></p>
+<h3>🌤 天氣</h3>
+<p id="weatherText"></p>
 </div>
 </div>
 
-<!-- 底部導航 -->
+<!-- 底部 -->
 <div class="nav">
 <button onclick="tab('trip')" class="active">行程</button>
 <button onclick="tab('fx')">匯率</button>
@@ -184,23 +306,19 @@ color:#555;
 function tab(id){
 document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
 document.getElementById(id).classList.add('active');
-document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('active'));
 event.target.classList.add('active');
 }
 
-// 行程切換
+// Day切換
 function showDay(n){
 document.querySelectorAll('.day').forEach(d=>d.classList.remove('active'));
 document.getElementById('day'+n).classList.add('active');
-
-document.querySelectorAll('.day-tabs button').forEach(b=>b.classList.remove('active'));
-event.target.classList.add('active');
 }
 
 // 展開
 function toggle(el){
-let d = el.querySelector('.detail');
-d.style.display = d.style.display==='block'?'none':'block';
+let d=el.querySelector('.detail');
+if(d) d.style.display=d.style.display==='block'?'none':'block';
 }
 
 // 匯率
@@ -215,17 +333,15 @@ jpy.oninput=()=>twd.value=(jpy.value*rate).toFixed(0);
 
 // 預算
 function calc(){
-let total=(+cost1.value||0)+(+cost2.value||0)+(+cost3.value||0);
-totalText="總計："+total;
-document.getElementById("total").innerText=totalText;
+let t=(+c1.value||0)+(+c2.value||0)+(+c3.value||0);
+total.innerText="總計："+t;
 }
-cost1.oninput=cost2.oninput=cost3.oninput=calc;
+c1.oninput=c2.oninput=c3.oninput=calc;
 
 // 天氣
 fetch("https://api.open-meteo.com/v1/forecast?latitude=35.31&longitude=139.55&current_weather=true")
 .then(r=>r.json()).then(d=>{
 weatherText.innerText="溫度："+d.current_weather.temperature+"°C";
-sunText.innerText="日出約 05:50 / 日落約 17:00";
 });
 </script>
 
