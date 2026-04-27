@@ -7,70 +7,139 @@
 
 <style>
 body{margin:0;font-family:-apple-system;background:#f5f7fa;}
-header{padding:20px;font-size:20px;font-weight:bold;}
-.section{display:none;padding:16px;}
+header{padding:15px;font-size:20px;font-weight:bold;}
+
+.section{display:none;}
 .section.active{display:block;}
-.card{background:white;border-radius:16px;padding:16px;margin-bottom:16px;box-shadow:0 4px 10px rgba(0,0,0,0.1);}
-input{width:100%;padding:10px;margin:5px 0;border-radius:10px;border:1px solid #ddd;}
-.nav{position:fixed;bottom:0;width:100%;display:flex;background:white;border-top:1px solid #ddd;}
-.nav button{flex:1;border:none;padding:12px;background:none;}
-.nav button.active{color:#3498db;font-weight:bold;}
-.btn{display:inline-block;padding:8px 12px;background:#3498db;color:white;border-radius:10px;text-decoration:none;margin-top:5px;}
+
+.card{
+background:white;
+border-radius:16px;
+padding:16px;
+margin:12px;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+.nav{
+position:fixed;
+bottom:0;
+width:100%;
+display:flex;
+background:white;
+border-top:1px solid #ddd;
+}
+.nav button{
+flex:1;
+border:none;
+padding:12px;
+background:none;
+}
+.nav button.active{
+color:#3498db;
+font-weight:bold;
+}
+
+.btn{
+display:inline-block;
+padding:8px 12px;
+background:#3498db;
+color:white;
+border-radius:10px;
+text-decoration:none;
+margin-top:5px;
+}
+
+/* 行程 */
+.day{display:none;}
+.day.active{display:block;}
+
+.day-tabs{
+display:flex;
+gap:8px;
+padding:10px;
+}
+.day-tabs button{
+flex:1;
+padding:8px;
+border:none;
+border-radius:10px;
+background:#eee;
+}
+.day-tabs button.active{
+background:#3498db;
+color:white;
+}
+
+.spot{
+background:white;
+margin:10px;
+padding:15px;
+border-radius:15px;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+cursor:pointer;
+}
+
+.detail{
+display:none;
+margin-top:10px;
+font-size:14px;
+color:#555;
+}
 </style>
 </head>
 
 <body>
 
-<header>🌊 鎌倉旅遊App</header>
+<!-- Hero 圖 -->
+<div style="position:relative;">
+<img src="kamakura.jpg" style="width:100%;height:220px;object-fit:cover;">
+<div style="position:absolute;bottom:10px;left:15px;color:white;font-size:20px;font-weight:bold;">
+鎌倉・湘南之旅
+</div>
+</div>
 
 <!-- 行程 -->
-<div <!-- Hero 圖 -->
-<div style="position:relative;">
-  <img src="你的圖片連結" style="width:100%;height:220px;object-fit:cover;">
-  <div style="position:absolute;bottom:10px;left:15px;color:white;font-size:20px;font-weight:bold;">
-    鎌倉・湘南之旅
-  </div>
+<div id="trip" class="section active">
+
+<div class="day-tabs">
+<button onclick="showDay(1)" class="active">Day1</button>
+<button onclick="showDay(2)">Day2</button>
+<button onclick="showDay(3)">Day3</button>
 </div>
 
-<!-- Day 切換 -->
-<div style="display:flex;gap:10px;padding:10px;">
-  <button onclick="showDay(1)">Day1</button>
-  <button onclick="showDay(2)">Day2</button>
-  <button onclick="showDay(3)">Day3</button>
-</div>
-
-<!-- 行程容器 -->
 <div id="day1" class="day active">
-  <div class="spot" onclick="toggle(this)">
-    <h3>七里濱夕陽</h3>
-    <div class="detail">
-      <p>地址：七里ヶ浜海岸</p>
-      <p>時間：全天開放</p>
-      <a href="https://www.google.com/maps/search/?api=1&query=七里ヶ浜" target="_blank">導航</a>
-    </div>
-  </div>
+<div class="spot" onclick="toggle(this)">
+<h3>七里濱夕陽</h3>
+<div class="detail">
+<p>地址：七里ヶ浜海岸</p>
+<p>時間：全天開放</p>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=七里ヶ浜" target="_blank">導航</a>
+</div>
+</div>
 </div>
 
 <div id="day2" class="day">
-  <div class="spot" onclick="toggle(this)">
-    <h3>鎌倉高校前</h3>
-    <div class="detail">
-      <p>地址：神奈川県鎌倉市腰越</p>
-      <p>時間：全天</p>
-      <a href="https://www.google.com/maps/search/?api=1&query=鎌倉高校前駅" target="_blank">導航</a>
-    </div>
-  </div>
+<div class="spot" onclick="toggle(this)">
+<h3>鎌倉高校前</h3>
+<div class="detail">
+<p>地址：神奈川県鎌倉市腰越</p>
+<p>時間：全天</p>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=鎌倉高校前駅" target="_blank">導航</a>
+</div>
+</div>
 </div>
 
 <div id="day3" class="day">
-  <div class="spot" onclick="toggle(this)">
-    <h3>鶴岡八幡宮</h3>
-    <div class="detail">
-      <p>地址：神奈川県鎌倉市雪ノ下2-1-31</p>
-      <p>時間：06:00–20:00</p>
-      <a href="https://www.google.com/maps/search/?api=1&query=鶴岡八幡宮" target="_blank">導航</a>
-    </div>
-  </div>
+<div class="spot" onclick="toggle(this)">
+<h3>鶴岡八幡宮</h3>
+<div class="detail">
+<p>地址：神奈川県鎌倉市雪ノ下2-1-31</p>
+<p>時間：06:00–20:00</p>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=鶴岡八幡宮" target="_blank">導航</a>
+</div>
+</div>
+</div>
+
 </div>
 
 <!-- 匯率 -->
@@ -103,7 +172,7 @@ input{width:100%;padding:10px;margin:5px 0;border-radius:10px;border:1px solid #
 </div>
 </div>
 
-<!-- 底部 -->
+<!-- 底部導航 -->
 <div class="nav">
 <button onclick="tab('trip')" class="active">行程</button>
 <button onclick="tab('fx')">匯率</button>
@@ -112,7 +181,6 @@ input{width:100%;padding:10px;margin:5px 0;border-radius:10px;border:1px solid #
 </div>
 
 <script>
-// 切換
 function tab(id){
 document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
 document.getElementById(id).classList.add('active');
@@ -120,12 +188,27 @@ document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('active')
 event.target.classList.add('active');
 }
 
+// 行程切換
+function showDay(n){
+document.querySelectorAll('.day').forEach(d=>d.classList.remove('active'));
+document.getElementById('day'+n).classList.add('active');
+
+document.querySelectorAll('.day-tabs button').forEach(b=>b.classList.remove('active'));
+event.target.classList.add('active');
+}
+
+// 展開
+function toggle(el){
+let d = el.querySelector('.detail');
+d.style.display = d.style.display==='block'?'none':'block';
+}
+
 // 匯率
 let rate=0.21;
 fetch("https://api.exchangerate.host/latest?base=JPY&symbols=TWD")
 .then(r=>r.json()).then(d=>{
 rate=d.rates.TWD;
-document.getElementById("rateText").innerText="1JPY ≈ "+rate.toFixed(3)+" TWD";
+rateText.innerText="1JPY ≈ "+rate.toFixed(3)+" TWD";
 });
 twd.oninput=()=>jpy.value=(twd.value/rate).toFixed(0);
 jpy.oninput=()=>twd.value=(jpy.value*rate).toFixed(0);
@@ -133,15 +216,16 @@ jpy.oninput=()=>twd.value=(jpy.value*rate).toFixed(0);
 // 預算
 function calc(){
 let total=(+cost1.value||0)+(+cost2.value||0)+(+cost3.value||0);
-document.getElementById("total").innerText="總計："+total;
+totalText="總計："+total;
+document.getElementById("total").innerText=totalText;
 }
 cost1.oninput=cost2.oninput=cost3.oninput=calc;
 
-// 天氣（簡化版）
+// 天氣
 fetch("https://api.open-meteo.com/v1/forecast?latitude=35.31&longitude=139.55&current_weather=true")
 .then(r=>r.json()).then(d=>{
-document.getElementById("weatherText").innerText="溫度："+d.current_weather.temperature+"°C";
-document.getElementById("sunText").innerText="日出約 05:50 / 日落約 17:00";
+weatherText.innerText="溫度："+d.current_weather.temperature+"°C";
+sunText.innerText="日出約 05:50 / 日落約 17:00";
 });
 </script>
 
