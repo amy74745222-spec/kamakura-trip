@@ -3,259 +3,105 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>鎌倉湘南旅遊App</title>
+<title>鎌倉旅遊App</title>
 
 <style>
-:root{
---main:#4facfe;
---accent:#00c6ff;
---glass:rgba(255,255,255,0.2);
-}
-
-body{
-margin:0;
-font-family:-apple-system,BlinkMacSystemFont;
-background:linear-gradient(180deg,#4facfe,#00c6ff);
-color:white;
-overflow-x:hidden;
-}
-
-/* Header */
-.header{
-padding:30px 20px;
-}
-
-.title{
-font-size:24px;
-font-weight:bold;
-}
-
-.subtitle{
-opacity:0.8;
-}
-
-/* 卡片 */
-.card{
-background:rgba(255,255,255,0.15);
-backdrop-filter:blur(12px);
-border-radius:20px;
-padding:16px;
-margin:12px;
-box-shadow:0 8px 20px rgba(0,0,0,0.1);
-}
-
-/* 按鈕 */
-.btn{
-display:inline-block;
-margin-top:8px;
-padding:10px 14px;
-border-radius:12px;
-background:white;
-color:#4facfe;
-font-weight:bold;
-text-decoration:none;
-font-size:14px;
-}
-
-/* 區塊 */
-.section{
-display:none;
-animation:fade .4s;
-}
-
-.section.active{
-display:block;
-}
-
-@keyframes fade{
-from{opacity:0;transform:translateY(10px);}
-to{opacity:1;}
-}
-
-/* 底部導航 */
-.nav{
-position:fixed;
-bottom:0;
-width:100%;
-display:flex;
-background:rgba(255,255,255,0.2);
-backdrop-filter:blur(12px);
-}
-
-.nav button{
-flex:1;
-padding:12px;
-border:none;
-background:none;
-color:white;
-font-size:12px;
-}
-
-.nav button.active{
-font-weight:bold;
-}
-
-/* 滑動區 */
-.scroll{
-overflow-x:auto;
-display:flex;
-padding-bottom:10px;
-}
-
-.scroll .card{
-min-width:260px;
-}
-
-/* 小標 */
-.small{
-opacity:0.8;
-font-size:13px;
-}
+body{margin:0;font-family:-apple-system;background:#f5f7fa;}
+header{padding:20px;font-size:20px;font-weight:bold;}
+.section{display:none;padding:16px;}
+.section.active{display:block;}
+.card{background:white;border-radius:16px;padding:16px;margin-bottom:16px;box-shadow:0 4px 10px rgba(0,0,0,0.1);}
+input{width:100%;padding:10px;margin:5px 0;border-radius:10px;border:1px solid #ddd;}
+.nav{position:fixed;bottom:0;width:100%;display:flex;background:white;border-top:1px solid #ddd;}
+.nav button{flex:1;border:none;padding:12px;background:none;}
+.nav button.active{color:#3498db;font-weight:bold;}
+.btn{display:inline-block;padding:8px 12px;background:#3498db;color:white;border-radius:10px;text-decoration:none;margin-top:5px;}
 </style>
 </head>
 
 <body>
 
-<div class="header">
-<div class="title">🌊 鎌倉・湘南旅</div>
-<div class="subtitle">10/26 - 10/28</div>
-</div>
+<header>🌊 鎌倉旅遊App</header>
 
-<!-- Day1 -->
-<div id="day1" class="section active">
-<div class="scroll">
-
+<!-- 行程 -->
+<div id="trip" class="section active">
 <div class="card">
-<h3>入住 和美屋</h3>
-<p class="small">15:00 Check-in</p>
-<a class="btn" href="https://www.google.com/maps/search/?api=1&query=和美屋+鎌倉">導航</a>
-</div>
-
-<div class="card">
-<h3>七里濱夕陽</h3>
-<p class="small">16:30</p>
+<h3>Day1</h3>
+<p>七里濱夕陽</p>
 <a class="btn" href="https://www.google.com/maps/search/?api=1&query=七里ヶ浜">導航</a>
 </div>
+</div>
 
+<!-- 匯率 -->
+<div id="fx" class="section">
 <div class="card">
-<h3>旅館晚餐</h3>
-<p class="small">18:30</p>
+<h3>💱 匯率換算</h3>
+<input id="twd" placeholder="台幣">
+<input id="jpy" placeholder="日幣">
+<p id="rateText">載入中...</p>
+</div>
 </div>
 
-</div>
-</div>
-
-<!-- Day2 -->
-<div id="day2" class="section">
-<div class="scroll">
-
+<!-- 預算 -->
+<div id="budget" class="section">
 <div class="card">
-<h3>七里濱日出</h3>
-<a class="btn" href="https://www.google.com/maps/search/?api=1&query=七里ヶ浜">導航</a>
+<h3>💰 預算分析</h3>
+<input id="cost1" placeholder="Day1 花費">
+<input id="cost2" placeholder="Day2 花費">
+<input id="cost3" placeholder="Day3 花費">
+<p id="total">總計：0</p>
+</div>
 </div>
 
+<!-- 天氣 -->
+<div id="weather" class="section">
 <div class="card">
-<h3>bills 早餐</h3>
-<a class="btn" href="https://www.google.com/maps/search/?api=1&query=bills+七里ヶ浜">導航</a>
-</div>
-
-<div class="card">
-<h3>鎌倉高校前</h3>
-<a class="btn" href="https://www.google.com/maps/search/?api=1&query=鎌倉高校前駅">導航</a>
-</div>
-
-<div class="card">
-<h3>稻村崎</h3>
-<a class="btn" href="https://www.google.com/maps/search/?api=1&query=稲村ヶ崎">導航</a>
-</div>
-
-<div class="card">
-<h3>長谷大佛</h3>
-<a class="btn" href="https://www.google.com/maps/search/?api=1&query=高徳院+鎌倉大仏">導航</a>
-</div>
-
-<div class="card">
-<h3>伴手禮巡禮</h3>
-<p class="small">音樂盒堂 / 力餅家</p>
-</div>
-
-<div class="card">
-<h3>下午茶</h3>
-<a class="btn" href="https://www.google.com/maps/search/?api=1&query=Espresso+D+Works+七里ヶ浜">導航</a>
-</div>
-
+<h3>🌤 鎌倉天氣</h3>
+<p id="weatherText">載入中...</p>
+<p id="sunText"></p>
 </div>
 </div>
 
-<!-- Day3 -->
-<div id="day3" class="section">
-<div class="scroll">
-
-<div class="card">
-<h3>佐助稻荷神社</h3>
-<a class="btn" href="https://www.google.com/maps/search/?api=1&query=佐助稲荷神社">導航</a>
-</div>
-
-<div class="card">
-<h3>鶴岡八幡宮</h3>
-<a class="btn" href="https://www.google.com/maps/search/?api=1&query=鶴岡八幡宮">導航</a>
-</div>
-
-<div class="card">
-<h3>iwata coffee</h3>
-<a class="btn" href="https://www.google.com/maps/search/?api=1&query=イワタコーヒー店">導航</a>
-</div>
-
-<div class="card">
-<h3>小町通</h3>
-<a class="btn" href="https://www.google.com/maps/search/?api=1&query=小町通り">導航</a>
-</div>
-
-<div class="card">
-<h3>鎌倉釜飯</h3>
-<a class="btn" href="https://www.google.com/maps/search/?api=1&query=鎌倉釜飯">導航</a>
-</div>
-
-</div>
-</div>
-
-<!-- 其他 -->
-<div id="info" class="section">
-<div class="card">
-<h3>住宿</h3>
-<p>和美屋</p>
-<a class="btn" href="https://www.google.com/maps/search/?api=1&query=神奈川県鎌倉市坂ノ下11-13">導航</a>
-</div>
-
-<div class="card">
-<h3>行李</h3>
-<p>護照 / 現金 / 外套 / 相機</p>
-</div>
-
-<div class="card">
-<h3>預算</h3>
-<p>Day1 ¥2500</p>
-<p>Day2 ¥10000</p>
-<p>Day3 ¥15000</p>
-</div>
-</div>
-
-<!-- 導航 -->
+<!-- 底部 -->
 <div class="nav">
-<button onclick="tab('day1')" class="active">Day1</button>
-<button onclick="tab('day2')">Day2</button>
-<button onclick="tab('day3')">Day3</button>
-<button onclick="tab('info')">資訊</button>
+<button onclick="tab('trip')" class="active">行程</button>
+<button onclick="tab('fx')">匯率</button>
+<button onclick="tab('budget')">預算</button>
+<button onclick="tab('weather')">天氣</button>
 </div>
 
 <script>
+// 切換
 function tab(id){
 document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
 document.getElementById(id).classList.add('active');
-
 document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('active'));
 event.target.classList.add('active');
 }
+
+// 匯率
+let rate=0.21;
+fetch("https://api.exchangerate.host/latest?base=JPY&symbols=TWD")
+.then(r=>r.json()).then(d=>{
+rate=d.rates.TWD;
+document.getElementById("rateText").innerText="1JPY ≈ "+rate.toFixed(3)+" TWD";
+});
+twd.oninput=()=>jpy.value=(twd.value/rate).toFixed(0);
+jpy.oninput=()=>twd.value=(jpy.value*rate).toFixed(0);
+
+// 預算
+function calc(){
+let total=(+cost1.value||0)+(+cost2.value||0)+(+cost3.value||0);
+document.getElementById("total").innerText="總計："+total;
+}
+cost1.oninput=cost2.oninput=cost3.oninput=calc;
+
+// 天氣（簡化版）
+fetch("https://api.open-meteo.com/v1/forecast?latitude=35.31&longitude=139.55&current_weather=true")
+.then(r=>r.json()).then(d=>{
+document.getElementById("weatherText").innerText="溫度："+d.current_weather.temperature+"°C";
+document.getElementById("sunText").innerText="日出約 05:50 / 日落約 17:00";
+});
 </script>
 
 </body>
